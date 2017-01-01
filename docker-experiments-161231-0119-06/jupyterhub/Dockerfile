@@ -1,0 +1,26 @@
+# Based on JupyterHub's reference deployment,
+# https://github.com/jupyterhub/jupyterhub-deploy-docker,
+# Copyright (c) Jupyter Development Team.
+# Distributed under the terms of the Modified BSD License.
+FROM jupyterhub/jupyterhub-onbuild:0.7.0
+
+# Install dockerspawner and its dependencies
+RUN /opt/conda/bin/pip install \
+    oauthenticator==0.5.* \
+    dockerspawner==0.5.*
+
+# install docker on the jupyterhub container
+RUN wget https://get.docker.com -q -O /tmp/getdocker && \
+    chmod +x /tmp/getdocker && \
+    sh /tmp/getdocker
+
+# Copy TLS certificate and key
+ENV SSL_CERT /srv/jupyterhub/secrets/crypticlabs-jupyterhub.crt
+ENV SSL_KEY /srv/jupyterhub/secrets/crypticlabs-jupyterhub.key
+COPY ./secrets/*.crt $SSL_CERT
+COPY ./secrets/*.key $SSL_KEY
+RUN chmod 700 /srv/jupyterhub/secrets && \
+    chmod 600 /srv/jupyterhub/secrets/*
+
+COPY ./userlist /srv/jupyterhub/userlist
+
