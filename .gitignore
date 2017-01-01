@@ -1,0 +1,24 @@
+# Per-developer .env file.
+*/.env
+
+# Secrets!
+/docker-experiments-161231-0119-06/jupyterhub/secrets/*
+
+# Archives.
+*.zip
+*.tgz
+*.tar
+*.tar.gz
+tarfiles
+
+# Mac filesystem cruft.
+.DS_Store
+
+# Vim cruft.
+*.vim
+*.sw?
+*.swp
+
+# Python cruft.
+__pycache__
+*.py?
