@@ -102,5 +102,18 @@ This provides a multi-user Jupyter notebook server hub which spawns, manages, an
   $ make clean
   ```
 
-## To do:
+### How to access:
+If all goes well, you'll be able to access your local JupyterHub deployment via the URL https://localhost:443 on your computer. Your browser should be highly suspicious of the self-signed SSL certificate, which you will have to persuade your browser to trust. Your browser will then take you to GitHub, where you'll be asked to grant various permissions to the OAuth application. Once you grant permissions, JupyterHub will be able to authenticate you using your GitHub login.
+
+### Access permissions:
+@kaben has set things up so that both @kaben and @carriere4 will be JupyterHub admins, which is configured in *jupyterhub/userlist*, which currently contains the following lines:
+
+```
+kaben admin
+carriere4 admin
+```
+
+Everyone listed in this file can manually grant permissions to new users via the JupyterHub admin interface.
+
+### To do:
 * Right now these build instructions are kind of monolithic, in that they will build the entire system. Need to add instructions to build individual components.
