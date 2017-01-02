@@ -41,7 +41,7 @@ This provides a multi-user Jupyter notebook server hub which spawns, manages, an
     ```
 
     These use config info defined in *jupyterhub/cert.conf* to generate self-signed SSL certificate file *jupyterhub/secrets/crypticlabs-jupyterhub.crt* and key file *jupyterhub/secrets/crypticlabs-jupyterhub.key*. The info in *jupyterhub/cert.conf* is pretty self-explanatory if you're curious.
-* (One-time:) Write environment-configuration file *.env* with the following contents:
+* (One-time:) Write environment-configuration file *.env* with the following contents, adding `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET` obtained above (see the last three lines below).
 
   ```
   # Based on JupyterHub's reference deployment,
