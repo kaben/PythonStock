@@ -5,18 +5,23 @@ MAINTAINER Cryptic Labs <kaben.nanlohy@gmail.com>
 # Install software dependencies using apt-get, the Ubuntu package manager.
 RUN apt-get update --fix-missing \
  && apt-get install -y \
-    wget \
     bzip2 \
     ca-certificates \
-    sudo \
-    locales \
-    libglib2.0-0 \
-    libxext6 \
-    libsm6 \
-    libxrender1 \
     git \
+    libglib2.0-0 \
+    libsm6 \
+    libxext6 \
+    libxrender1 \
+    locales \
     mercurial \
-    subversion
+    subversion \
+    sudo \
+    texlive-fonts-recommended \
+    texlive-latex-base \
+    texlive-latex-extra \
+    texlive-latex-recommended \
+    wget \
+    ;
 
 # Install Anaconda.
 RUN echo 'export PATH=/opt/conda/bin:$PATH' \

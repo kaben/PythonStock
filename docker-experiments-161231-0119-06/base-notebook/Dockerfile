@@ -32,9 +32,12 @@ RUN mkdir /home/$NB_USER/work && \
 # Install software dependencies using conda, the Anaconda package manager.
 USER root
 RUN $CONDA_DIR/bin/conda install --yes \
-    notebook \
     jupyterhub \
+    notebook \
     pandas-datareader \
+    pandoc \
+    pandocfilters \
+    pypandoc \
  && $CONDA_DIR/bin/conda install --yes --channel anaconda-nb-extensions \
     nbbrowserpdf \
  && $CONDA_DIR/bin/conda clean -tipsy
