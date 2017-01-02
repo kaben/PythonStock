@@ -2,8 +2,7 @@ FROM ubuntu:16.04
 
 MAINTAINER Cryptic Labs <kaben.nanlohy@gmail.com>
 
-# Install dependencies for Jupyter notebook server that starts but lacks
-# features.
+# Install software dependencies using apt-get, the Ubuntu package manager.
 RUN apt-get update --fix-missing \
  && apt-get install -y \
     wget \

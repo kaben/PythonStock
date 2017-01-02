@@ -29,7 +29,7 @@ RUN mkdir /home/$NB_USER/work && \
     mkdir /home/$NB_USER/.jupyter && \
     echo "cacert=/etc/ssl/certs/ca-certificates.crt" > /home/$NB_USER/.curlrc
 
-# Install Jupyter notebook.
+# Install software dependencies using conda, the Anaconda package manager.
 USER root
 RUN $CONDA_DIR/bin/conda install --yes \
     notebook \

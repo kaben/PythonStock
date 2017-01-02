@@ -2,6 +2,7 @@
 
 This subdirectory contains an experimental Docker deployment of JupyterHub, Anaconda3, and Jupyter Notebook.
 
+
 ### JupyterHub Docker image
 This provides a multi-user Jupyter notebook server hub which spawns, manages,
 and proxies an isolated Anaconda3-based Jupyter Notebook server for each user.
@@ -11,13 +12,15 @@ It uses GitHub login for authentication.
 * https://jupyterhub.readthedocs.io/en/latest/
 * https://github.com/jupyterhub/jupyterhub
 
-### Custom Anaconda3 Docker image
+
+### Custom Anaconda3 Docker image *crypticlabs/anaconda3*
 This provides a base Anaconda3 installation for use in constructing Jupyter
 Notebook images. It's based on the Ubuntu-16.04 Docker image, whereas the
 official Anaconda3 Docker image is based on Debian. @kaben used Ubuntu instead
 of Debian because we're more familiar with Ubuntu.
 
-### Custom Jupyter Notebook Docker image
+
+### Custom Jupyter Notebook Docker image *crypticlabs/base-notebook*
 This is basic Jupyter Notebook single-user server image, which is instantiated
 on a per-user basis by the JupyterHub container. It's based on the above custom
 Anaconda3 image, whereas the official Jupyter Notebook stacks are minimal
@@ -33,7 +36,37 @@ development of our analytics platform. For now this is safe, because only
 However, we *must* disable this before giving access to users outside of
 Cryptic Labs, or before deployment on a public-facing host.
 
-### How to deploy:
+
+##### How to add software to *crypticlabs/base-notebook* or *crypticlabs/anaconda3*
+Edit *anaconda3/Dockerfile* or *base-notebook/Dockerfile*, respectively, as
+described below.
+
+As a general rule, try to add the software package you want to the
+*crypticlabs/base-notebook* image using `conda` (the Anaconda packaging tool),
+because then it's more likely to be compatible with Anaconda. Otherwise, use
+`apt-get` (the Ubuntu packaging tool) to add the software package to the
+*crypticslab/anaconda3* image. 
+
+To add software to the *crypticlabs/base-notebook* image using `conda`, edit
+*base-notebook/Dockerfile*:
+* Look for the section "Install software dependencies using conda..."
+* Add a new line to the `conda install...` command for the software package you
+  want to install.
+
+To add software to the *crypticlabs/anaconda3* image using `apt-get`, edit
+*anaconda3/Dockerfile*:
+* Look for the section "Install software dependencies using apt-get...".
+* Add a new line to the `apt-get install...` command for the software
+  package you want to install.
+
+If the software you want to install isn't available via `conda` or `apt-get`,
+we can still install it, but doing so is a little more tedious. It might be
+available using `pip` (the Python package manager) or `dpkg` (the lower-level
+Debian package manager). If all else fails, we can write a custom script to
+download, build, and install the software. Ask @kaben for details.
+
+
+### How to deploy JupyterHub:
 This analytics platform can be deployed on any laptop or desktop computer for
 which Docker is available, using the following steps.
 * (One-time:) Install [Docker](https://docs.docker.com).
