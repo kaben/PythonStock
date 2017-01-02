@@ -34,6 +34,7 @@ USER root
 RUN $CONDA_DIR/bin/conda install --yes \
     notebook \
     jupyterhub \
+    pandas-datareader \
  && $CONDA_DIR/bin/conda install --yes --channel anaconda-nb-extensions \
     nbbrowserpdf \
  && $CONDA_DIR/bin/conda clean -tipsy
