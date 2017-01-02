@@ -28,9 +28,11 @@ This provides a multi-user Jupyter notebook server hub which spawns, manages, an
 * (One-time:) Generate temporary, self-signed SSL certificate and key.
   * Note: we will eventually replace these with CrypticLabs SSL certificates obtained from a service such as [Let's Encrypt](https://letsencrypt.org).
   * Command for temporary self-signed certificates:
+  
     ```
     $ make self-signed-cert
     ```
+    
   * Explanation: this invokes commands (defined in *Makefile*):
   
     ```
