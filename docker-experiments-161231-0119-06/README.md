@@ -28,19 +28,62 @@ This provides a multi-user Jupyter notebook server hub which spawns, manages, an
 * (One-time:) Generate temporary, self-signed SSL certificate and key.
   * Note: we will eventually replace these with CrypticLabs SSL certificates obtained from a service such as [Let's Encrypt](https://letsencrypt.org).
   * Command for temporary self-signed certificates:
-  
+
     ```
     $ make self-signed-cert
     ```
-    
+
   * Explanation: this invokes commands (defined in *Makefile*):
-  
+
     ```
     $ mkdir -p jupyterhub/secrets
     $ openssl req -x509 -nodes -days 365 -newkey rsa -config jupyterhub/cert.conf -keyout jupyterhub/secrets/crypticlabs-jupyterhub.key -out jupyterhub/secrets/crypticlabs-jupyterhub.crt
     ```
-    
+
     These use config info defined in *jupyterhub/cert.conf* to generate self-signed SSL certificate file *jupyterhub/secrets/crypticlabs-jupyterhub.crt* and key file *jupyterhub/secrets/crypticlabs-jupyterhub.key*. The info in *jupyterhub/cert.conf* is pretty self-explanatory if you're curious.
+* (One-time:) Write environment-configuration file *.env* with the following contents:
+
+  ```
+  # Based on JupyterHub's reference deployment,
+  # https://github.com/jupyterhub/jupyterhub-deploy-docker,
+  # Copyright (c) Jupyter Development Team.
+  # Distributed under the terms of the Modified BSD License.
+
+  # Use this file to set default values for environment variables specified in
+  # docker-compose configuration file.  docker-compose will substitute these
+  # values for environment variables in the configuration file IF the variables
+  # are not set in the shell environment.
+
+  # To override these values, set the shell environment variables.
+
+  # Name of Docker machine
+  DOCKER_MACHINE_NAME=crypticlabs-jupyterhub
+
+  # Name of Docker network
+  DOCKER_NETWORK_NAME=crypticlabs-jupyterhub-network
+
+  # Single-user Jupyter Notebook server container image
+  DOCKER_NOTEBOOK_IMAGE=jupyter/scipy-notebook:18e5563b7486
+
+  # Notebook directory in the container.
+  # This will be /home/jovyan/work if the default
+  # This directory is stored as a docker volume for each user
+  DOCKER_NOTEBOOK_DIR=/home/crypticlabs/work
+
+  # Docker run command to use when spawning single-user containers
+  DOCKER_SPAWN_CMD=start-singleuser.sh
+
+  # Name of JupyterHub container data volume
+  DATA_VOLUME_HOST=crypticlabs-jupyterhub-data
+
+  # Data volume container mount point
+  DATA_VOLUME_CONTAINER=/data
+
+  GITHUB_CLIENT_ID=<client ID for your GitHub OAuth application>
+  GITHUB_CLIENT_SECRET=<client secret for your GitHub OAuth application>
+  OAUTH_CALLBACK_URL=https://localhost:443/hub/oauth_callback
+  ```
+
 * Build command:
 
   ```
