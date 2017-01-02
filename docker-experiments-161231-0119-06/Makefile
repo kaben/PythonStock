@@ -45,7 +45,17 @@ check-files: jupyterhub/userlist $(cert_files)
 pull:
 	docker pull $(DOCKER_NOTEBOOK_IMAGE)
 
-notebook_image: pull
+anaconda3_image:
+	docker build -t crypticlabs/anaconda3:0.0.0 anaconda3
+
+base_notebook_image: anaconda3_image
+	docker build -t crypticlabs/base-notebook:0.0.0 base-notebook
+
+minimal_notebook_image: base_notebook_image
+	docker build -t crypticlabs/minimal-notebook:0.0.0 minimal-notebook
+
+#notebook_image: pull
+notebook_image: base_notebook_image
 
 build: check-files network volumes
 	docker-compose build
