@@ -84,6 +84,15 @@ This provides a multi-user Jupyter notebook server hub which spawns, manages, an
   OAUTH_CALLBACK_URL=https://localhost:443/hub/oauth_callback
   ```
 
+* (As-needed:) Build the Docker image used to make Jupyter Notebooks.
+  * Build command:
+
+    ```
+    $ make notebook_image
+    ```
+
+    At the moment, all this does is pull in the official Jupyter SciPy Notebook image *jupyter/scipy-notebook* to your computer, so it can be used to make per-user notebook servers.
+
 * Build command:
 
   ```
