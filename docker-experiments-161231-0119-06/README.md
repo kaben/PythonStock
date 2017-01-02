@@ -91,7 +91,7 @@ This provides a multi-user Jupyter notebook server hub which spawns, manages, an
     $ make notebook_image
     ```
 
-    At the moment, all this does is pull in the official Jupyter SciPy Notebook image *jupyter/scipy-notebook* to your computer, so it can be used to make per-user notebook servers.
+    @kaben has marked this step as "as-needed" because we will need to rerun the command each time we update the Docker image used to provide per-user notebook servers. But for the moment, all this does is pull in the official Jupyter SciPy Notebook image *jupyter/scipy-notebook*.
 
 * Build command:
 
