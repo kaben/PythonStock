@@ -32,20 +32,27 @@ This provides a multi-user Jupyter notebook server hub which spawns, manages, an
     $ make self-signed-cert
     ```
   * Explanation: this invokes commands (defined in *Makefile*):
+  
     ```
     $ mkdir -p jupyterhub/secrets
     $ openssl req -x509 -nodes -days 365 -newkey rsa -config jupyterhub/cert.conf -keyout jupyterhub/secrets/crypticlabs-jupyterhub.key -out jupyterhub/secrets/crypticlabs-jupyterhub.crt
     ```
+    
     These use config info defined in *jupyterhub/cert.conf* to generate self-signed SSL certificate file *jupyterhub/secrets/crypticlabs-jupyterhub.crt* and key file *jupyterhub/secrets/crypticlabs-jupyterhub.key*. The info in *jupyterhub/cert.conf* is pretty self-explanatory if you're curious.
 * Build command:
+
   ```
   $ make build
   ```
+
 * Deployment command:
+
   ```
   $ make up
   ```
+
 * Command to cleanup so you can build again from scratch:
+
   ```
   $ make clean
   ```
