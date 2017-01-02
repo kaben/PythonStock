@@ -3,7 +3,7 @@
 # Copyright (c) Jupyter Development Team.
 # Distributed under the terms of the Modified BSD License.
 
-FROM crypticlabs/anaconda3:0.0.0
+FROM crypticlabs/anaconda3
 
 MAINTAINER Cryptic Labs <kaben.nanlohy@gmail.com>
 

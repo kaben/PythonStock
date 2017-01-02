@@ -46,13 +46,13 @@ pull:
 	docker pull $(DOCKER_NOTEBOOK_IMAGE)
 
 anaconda3_image:
-	docker build -t crypticlabs/anaconda3:0.0.0 anaconda3
+	docker build -t crypticlabs/anaconda3 anaconda3
 
 base_notebook_image: anaconda3_image
-	docker build -t crypticlabs/base-notebook:0.0.0 base-notebook
+	docker build -t crypticlabs/base-notebook base-notebook
 
 minimal_notebook_image: base_notebook_image
-	docker build -t crypticlabs/minimal-notebook:0.0.0 minimal-notebook
+	docker build -t crypticlabs/minimal-notebook minimal-notebook
 
 #notebook_image: pull
 notebook_image: base_notebook_image

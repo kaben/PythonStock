@@ -195,10 +195,6 @@ the JupyterHub admin interface.
   * @kaben has added Make targets `anaconda3_image`, `base_notebook_image`, and
     `minimal_notebook_image` to *Makefile*, in order to simplify manual
     creation of these Docker images.
-* It was a bad idea to use ":0.0.0" tags for thes custom images. Need to switch
-  this to ":latest", or perhaps remove entirely.
-  * @kaben's thinking was to provide version tags. But that's going to get
-    hairy pretty quickly. Need to give this more thought.
 * There are several points of fragility having to do with configurations that
   must agree among multiple files, e.g., if the environment variable `NB_USER`
   in *base-notebook/Dockerfile* is set to "cryptic", then environment variable

@@ -3,7 +3,7 @@
 # Copyright (c) Jupyter Development Team.
 # Distributed under the terms of the Modified BSD License.
 
-FROM crypticlabs/base-notebook:0.0.0
+FROM crypticlabs/base-notebook
 
 MAINTAINER Cryptic Labs <kaben.nanlohy@gmail.com>
 
