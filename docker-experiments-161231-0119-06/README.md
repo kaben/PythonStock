@@ -9,7 +9,7 @@ This provides a multi-user Jupyter notebook server hub which spawns, manages, an
 * https://jupyterhub.readthedocs.io/en/latest/
 * https://github.com/jupyterhub/jupyterhub
 
-###### How to deploy:
+### How to deploy:
 * (One-time:) Install [Docker](https://docs.docker.com).
 * (One-time:) Setup a GitHub OAuth application.
   * @kaben has created a GitHub OAuth application for development, and can provide JupyterHub config info needed to use it.
