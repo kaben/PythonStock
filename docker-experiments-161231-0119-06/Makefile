@@ -57,7 +57,10 @@ scidb_ext_image: scidb_image
 scidb_pkg_image: scidb_image
 	docker build -t crypticlabs/scidb:16.9-pkg --file scidb/Dockerfile.pkg scidb
 
-scidb_images: scidb_pre_image scidb_image scidb_ext_image scidb_pkg_image
+scidb_deb_image:
+	docker build -t crypticlabs/scidb:16.9-deb --file scidb/Dockerfile.deb scidb
+
+scidb_images: scidb_pre_image scidb_image scidb_ext_image scidb_pkg_image scidb_deb_image
 
 
 anaconda3_image:
