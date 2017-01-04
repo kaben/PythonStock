@@ -48,7 +48,10 @@ pull:
 scidb_pre_image:
 	docker build -t crypticlabs/scidb:16.9-pre --file scidb/Dockerfile.pre scidb
 
-scidb_images: scidb_pre_image
+scidb_image: scidb_pre_image
+	docker build -t crypticlabs/scidb:16.9 --file scidb/Dockerfile scidb
+
+scidb_images: scidb_pre_image scidb_image
 
 
 anaconda3_image:

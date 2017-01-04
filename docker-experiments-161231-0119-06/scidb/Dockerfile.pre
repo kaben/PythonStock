@@ -1,3 +1,6 @@
+# Based on rvernica/scidb:16.9-pre,
+# https://github.com/rvernica/docker-library/tree/master/scidb/16.9
+
 FROM debian:8
 
 ARG TERM=linux
