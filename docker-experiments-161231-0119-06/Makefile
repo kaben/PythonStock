@@ -45,6 +45,12 @@ check-files: jupyterhub/userlist $(cert_files)
 pull:
 	docker pull $(DOCKER_NOTEBOOK_IMAGE)
 
+scidb_pre_image:
+	docker build -t crypticlabs/scidb:16.9-pre --file scidb/Dockerfile.pre scidb
+
+scidb_images: scidb_pre_image
+
+
 anaconda3_image:
 	docker build -t crypticlabs/anaconda3 anaconda3
 
