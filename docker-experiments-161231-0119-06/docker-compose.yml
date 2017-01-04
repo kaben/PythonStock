@@ -40,6 +40,10 @@ services:
     command: >
       jupyterhub -f /srv/jupyterhub/jupyterhub_config.py
 
+  scidb:
+    build: ./scidb_ext
+    image: crypticlabs-scidb
+
 volumes:
   data:
     external:
